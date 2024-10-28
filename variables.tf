@@ -15,7 +15,22 @@ variable "workspaces" {
     phases         = list(string)
   }))
 
+  default = null
+
   description = "(Required) A list of workspaces to create, where each workspace is a map with workspace_name, project_name, and a list of phases. The list can contain plan and apply."
+}
+
+variable "stacks" {
+  type = list(object({
+    stack_name      = string
+    deployment_name = string
+    project_name    = string
+    operations      = list(string)
+  }))
+
+  default = null
+
+  description = "(Required) A list of stacks to create, where each stack is a map with stack_name, deployment_name, project_name, and a list of operations. The list can contain plan and apply."
 }
 
 variable "owner_id" {
